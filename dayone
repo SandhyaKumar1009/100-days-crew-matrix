@@ -1,1 +1,29 @@
 
+2053. Kth Distinct String in an Array
+
+
+python code:
+class Solution(object):
+    def kthDistinct(self, arr, k):
+        
+        count = {}
+       
+        for s in arr:
+            if s in count:
+                count[s] += 1
+            else:
+                count[s] = 1
+
+        distinct_strings = []
+        for s in arr:
+            if count[s] == 1:
+                distinct_strings.append(s)
+        if len(distinct_strings) >= k:
+            return distinct_strings[k-1]  
+        else:
+            return ""  
+
+solution = Solution()
+print(solution.kthDistinct(["d","b","c","b","c","a"], 2))  
+print(solution.kthDistinct(["aaa","aa","a"], 1)) 
+print(solution.kthDistinct(["a","b","a"], 3))  
